@@ -141,7 +141,7 @@ const Shop = props => {
                   return (
                     <IonItem key={index}>
                       <IonLabel>{item.identifier}</IonLabel>
-                      <IonButton slot="end" onClick={() => removeItemFromCart(item)}>Aus dem Einkaufswagen entfernen</IonButton>
+                      <IonButton slot="end" onClick={() => removeItemFromCart(item)}>Entfernen</IonButton>
                     </IonItem>
                   )
                 })}
