@@ -47,7 +47,7 @@ const Shop = props => {
     const token = localStorage.token
     let body = { data: cart };
     body = JSON.stringify(body);
-    const url = 'http://18.156.176.105/user';
+    const url = 'http://3.123.35.137/user';
     fetch(url, {
       headers: {'Content-Type': 'application/json',
       Authorization: 'bearer ' + token},
@@ -76,10 +76,10 @@ const Shop = props => {
   useEffect(() => {
     setShopMessage('')
     setCartMessage('')
-  }, [userContext.userState.login, props.tabChanged])
+  }, [userContext.userState.login, props.tabChanged, shopContentToDisplay])
 
   useEffect(() => {
-    fetch('http://18.156.176.105/data', 
+    fetch('http://3.123.35.137/data', 
     {
       headers: {
         'Content-Type': 'application/json'

@@ -30,3 +30,14 @@
   .md {
     --ion-text-color: #222;
   }
+
+  @media (max-width: 600px) {
+    ion-tab-button {
+      min-width: 25vw;
+      }
+      
+    ion-tab-bar {
+    overflow-x: auto;
+    justify-content: left;
+    }
+  }

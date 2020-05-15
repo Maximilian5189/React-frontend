@@ -8,7 +8,7 @@ const Memberarea = props => {
 
   const getUserData = props => {
     const token = localStorage.token
-    const url = 'http://18.156.176.105/user';
+    const url = 'http://3.123.35.137/user';
 
     fetch(url, {
       headers: {'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const Memberarea = props => {
               {userData.map((item, index) => {
                 return (
                   <IonItem key={index}>
-                    <p>{item.name}</p>
+                    <p>{item.identifier}</p>
                   </IonItem>
                 )
               })}

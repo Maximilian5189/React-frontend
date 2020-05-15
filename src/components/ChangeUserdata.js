@@ -39,7 +39,7 @@ const ChangeUserdata = props => {
     body[fieldName] = formFields[fieldName].fieldValue;
 
     body = JSON.stringify(body);
-    const url = 'http://18.156.176.105/user';
+    const url = 'http://3.123.35.137/user';
     fetch(url, {
       headers: {'Content-Type': 'application/json',
       Authorization: 'bearer ' + token},

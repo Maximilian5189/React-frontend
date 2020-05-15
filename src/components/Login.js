@@ -27,7 +27,7 @@ const Login = props => {
       body = JSON.stringify({username: formFields.username.fieldValue, password: formFields.password.fieldValue});
     }
 
-    fetch('http://18.156.176.105/user/login', 
+    fetch('http://3.123.35.137/user/login', 
     {
       headers: {'Content-Type': 'application/json'},
       body: body,

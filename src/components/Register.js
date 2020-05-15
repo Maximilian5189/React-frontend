@@ -25,7 +25,7 @@ const Register = props => {
     }
 
     const body = JSON.stringify({username: formFields.username.fieldValue, password: formFields.password.fieldValue, email: formFields.email.fieldValue});
-    const url = 'http://18.156.176.105/user/add';
+    const url = 'http://3.123.35.137/user/add';
     fetch(url, {
       headers: {'Content-Type': 'application/json'},
       body: body,
