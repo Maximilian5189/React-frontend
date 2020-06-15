@@ -47,7 +47,7 @@ const Shop = props => {
     const token = localStorage.token
     let body = { data: cart };
     body = JSON.stringify(body);
-    const url = 'http://3.123.35.137/user';
+    const url = 'http://http://mybackend.hopto.org:8000//user';
     fetch(url, {
       headers: {'Content-Type': 'application/json',
       Authorization: 'bearer ' + token},
@@ -79,7 +79,7 @@ const Shop = props => {
   }, [userContext.userState.login, props.tabChanged, shopContentToDisplay])
 
   useEffect(() => {
-    fetch('http://3.123.35.137/data', 
+    fetch('http://http://mybackend.hopto.org:8000//data', 
     {
       headers: {
         'Content-Type': 'application/json'
