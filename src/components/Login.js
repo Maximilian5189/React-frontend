@@ -27,7 +27,7 @@ const Login = props => {
       body = JSON.stringify({username: formFields.username.fieldValue, password: formFields.password.fieldValue});
     }
 
-    fetch('http://http://mybackend.hopto.org:8000//user/login', 
+    fetch('http://mybackend.hopto.org:8000/user/login', 
     {
       headers: {'Content-Type': 'application/json'},
       body: body,

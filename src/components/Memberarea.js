@@ -8,7 +8,7 @@ const Memberarea = props => {
 
   const getUserData = props => {
     const token = localStorage.token
-    const url = 'http://http://mybackend.hopto.org:8000//user';
+    const url = 'http://mybackend.hopto.org:8000/user';
 
     fetch(url, {
       headers: {'Content-Type': 'application/json',

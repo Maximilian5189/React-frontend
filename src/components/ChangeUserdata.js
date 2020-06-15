@@ -39,7 +39,7 @@ const ChangeUserdata = props => {
     body[fieldName] = formFields[fieldName].fieldValue;
 
     body = JSON.stringify(body);
-    const url = 'http://http://mybackend.hopto.org:8000//user';
+    const url = 'http://mybackend.hopto.org:8000/user';
     fetch(url, {
       headers: {'Content-Type': 'application/json',
       Authorization: 'bearer ' + token},
