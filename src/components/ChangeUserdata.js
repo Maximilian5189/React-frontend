@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../GlobalState';
-import { IonButton, IonPage, IonText, IonList, IonContent } from '@ionic/react';
+import { IonButton, IonPage, IonText, IonList, IonContent, IonItem } from '@ionic/react';
 import Input from './Input';
 import { getFieldErrors } from '../functions/fieldvalidation';
 
 const ChangeUserdata = props => {
+  const useMountEffect = (fun) => useEffect(fun, [])
   const userContext = useContext(UserContext);
   const [changeDataError, setchangeDataError] = useState('');
   const [formFields, setformFields] = useState({
@@ -14,12 +15,33 @@ const ChangeUserdata = props => {
   });
   const [fieldToChange, setFieldToChange] = useState();
   const [passwordError, setPasswordError] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+
+  const getInitialUserdata = () => {
+    const token = localStorage.token
+
+    const url = 'https://mybackend.hopto.org:8000/user';
+    fetch(url, {
+      headers: {'Content-Type': 'application/json',
+      Authorization: 'bearer ' + token},
+      method: 'GET'
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(backendAnswer => {
+      setUserEmail(backendAnswer.userData.email)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
 
   const changeUserdata = (fieldName) => {
     const errorsExist = hasFormErrors(fieldName)
     let invalidPassword;
 
-    if (formFields.password.fieldValue !== formFields.passwordrepeat.fieldValue) {
+    if (fieldName === 'password' && formFields.password.fieldValue !== formFields.passwordrepeat.fieldValue) {
       invalidPassword = true;
       setPasswordError('Passwörter müssen übereinstimmen.')
     } else {
@@ -52,6 +74,9 @@ const ChangeUserdata = props => {
     .then(backendAnswer => {
       if (backendAnswer.success === true) {
         setchangeDataError(<IonText color="success"><p>Datenänderung erfolgreich.</p></IonText>)
+        if (fieldName === 'email') {
+          setUserEmail(formFields[fieldName].fieldValue)
+        }
        } else {
         setchangeDataError(<IonText color="danger"><p>Datenänderung nicht möglich.</p></IonText>)
       }
@@ -87,6 +112,8 @@ const ChangeUserdata = props => {
     setPasswordError('')
   }
 
+  useMountEffect(getInitialUserdata)
+
   useEffect(() => {
     setchangeDataError('')
     setPasswordError('')
@@ -108,6 +135,9 @@ const ChangeUserdata = props => {
           <IonPage>
             <IonContent className="ion-padding">
               <IonList>
+                <IonItem>
+                  <IonText>Aktuelle Email: {userEmail}</IonText>
+                </IonItem>
                 <Input fieldName="email" type="text" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
               </IonList>
               <IonButton onClick={() => navigateBack()}>Zurück</IonButton>
