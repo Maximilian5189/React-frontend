@@ -42,8 +42,8 @@ const Input = props => {
     return (
       <React.Fragment>
         <IonItem>
-          <IonLabel position="floating">{props.fieldName}</IonLabel>
-          <IonInput type={props.type} clearOnEdit={props.clearOnEdit} onIonBlur={e => handleUserInput(e)}/>
+          <IonLabel position="floating">{props.formFields[props.fieldName].fieldLabel}</IonLabel>
+          <IonInput type={props.formFields[props.fieldName].type} clearOnEdit={props.formFields[props.fieldName].clearOnEdit} onIonBlur={e => handleUserInput(e)}/>
           {formErrors.map((errorMessage, index) => <IonNote color="danger" key={index}>{errorMessage}</IonNote>)}
         </IonItem>
       </React.Fragment>

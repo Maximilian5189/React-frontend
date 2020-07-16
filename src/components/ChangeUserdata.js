@@ -8,9 +8,9 @@ const ChangeUserdata = props => {
   const userContext = useContext(UserContext);
   const [changeDataError, setchangeDataError] = useState('');
   const [formFields, setformFields] = useState({
-    email: {fieldValue: '', pattern: {value: '^[^s@]+@[^s@]+.[^s@]+$', message: 'Gültige Email sieht aber anders aus.'}},
-    password: {fieldValue: '', minLength: {value: 2, message: 'Zu kurz, mindestens 2. '}},
-    passwordrepeat: {fieldValue: '', type: 'password'}
+    email: {fieldValue: '', fieldLabel: 'Neue Email', type: 'text', pattern: {value: '^[^s@]+@[^s@]+.[^s@]+$', message: 'Gültige Email sieht aber anders aus.'}},
+    password: {fieldValue: '', fieldLabel: 'Neues Passwort', type: 'password', clearOnEdit: false, minLength: {value: 2, message: 'Zu kurz, mindestens 2. '}},
+    passwordrepeat: {fieldValue: '', fieldLabel: 'Passwort wiederholen', type: 'password', clearOnEdit: false}
   });
   const [fieldToChange, setFieldToChange] = useState();
   const [passwordError, setPasswordError] = useState('');
@@ -121,8 +121,8 @@ const ChangeUserdata = props => {
         <IonPage>
           <IonContent className="ion-padding">
             <IonList>
-              <Input fieldName="password" type="password" clearOnEdit="false" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
-              <Input fieldName="passwordrepeat" type="password" clearOnEdit="false" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
+              <Input fieldName="password" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
+              <Input fieldName="passwordrepeat" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
             </IonList>
             <IonButton onClick={() => navigateBack()}>Zurück</IonButton>
             <IonButton onClick={() => changeUserdata('password')}>Abschicken</IonButton>

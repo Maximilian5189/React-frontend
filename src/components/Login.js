@@ -8,8 +8,8 @@ const Login = props => {
   const userContext = useContext(UserContext);
   const [loginMessage, setloginMessage] = useState({success: '', fail: ''});
   const [formFields, setformFields] = useState({
-    username: {fieldValue: ''},
-    password: {fieldValue: ''}
+    username: {fieldValue: '', fieldLabel: 'Username', type: "text"},
+    password: {fieldValue: '', fieldLabel: 'Passwort', type: "password", clearOnEdit: false}
   });
 
   function login(e) {
@@ -87,8 +87,8 @@ const Login = props => {
         <IonContent className="ion-padding">
           <form noValidate autoComplete="off" onSubmit={login}>
             <IonList>
-              <Input fieldName="username" type="text" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
-              <Input fieldName="password" type="password" clearOnEdit="false" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
+              <Input fieldName="username" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
+              <Input fieldName="password" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
             </IonList>
             <IonButton type="submit">Einloggen</IonButton>
             <IonNote color="danger"><p>{loginMessage.fail}</p></IonNote>

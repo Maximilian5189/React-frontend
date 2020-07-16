@@ -9,9 +9,9 @@ const Register = props => {
   const [registerError, setRegisterError] = useState('');
   const [isRegistered, setIsRegistered] = useState(false);
   const [formFields, setformFields] = useState({
-    username: {fieldValue: '', minLength: {value: 2, message: 'Zu kurz, mindestens zwei Buchstaben.'}, maxLength: {value: 10, message: 'Zu lang. Maximal 10 Buchstaben.'}, pattern: {value: '^[a-zA-Z]+$', message: 'Nur Buchstaben.'}}, 
-    email: {fieldValue: '', pattern: {value: '^[^s@]+@[^s@]+.[^s@]+$', message: 'Gültige Email sieht aber anders aus.'}},
-    password: {fieldValue: '', minLength: {value: 2, message: 'Zu kurz, mindestens mindestens zwei Ziffern. '}}
+    username: {fieldValue: '', fieldLabel: 'Username', type: 'text', minLength: {value: 2, message: 'Zu kurz, mindestens zwei Buchstaben.'}, maxLength: {value: 10, message: 'Zu lang. Maximal 10 Buchstaben.'}, pattern: {value: '^[a-zA-Z]+$', message: 'Nur Buchstaben.'}}, 
+    email: {fieldValue: '', fieldLabel: 'Email', type: 'text', pattern: {value: '^[^s@]+@[^s@]+.[^s@]+$', message: 'Gültige Email sieht aber anders aus.'}},
+    password: {fieldValue: '', fieldLabel: 'Passwort', type: 'password', clearOnEdit: false, minLength: {value: 2, message: 'Zu kurz, mindestens mindestens zwei Ziffern. '}}
   });
 
   const register = () => {
@@ -80,9 +80,9 @@ const Register = props => {
         <IonPage>
           <IonContent className="ion-padding">
             <IonList>
-              <Input fieldName="username" type="text" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
-              <Input fieldName="email" type="text" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
-              <Input fieldName="password" type="password" clearOnEdit="false" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
+              <Input fieldName="username" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
+              <Input fieldName="email" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
+              <Input fieldName="password" formFields={formFields} setformFields={setformFields} tabChanged={props.tabChanged}/>
             </IonList>
             <IonButton className="ion-margin-bottom" onClick={register}>Register</IonButton>
             <IonNote color="danger"><p>{registerError}</p></IonNote>
