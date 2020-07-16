@@ -11,7 +11,7 @@ const Input = props => {
         if (field && field.fieldErrors) {
   
           const errorMessages = [];
-          for (let [key, value] of Object.entries(field.fieldErrors)) {
+          for (let value of Object.values(field.fieldErrors)) {
             if (value) {
               errorMessages.push(value);
             }

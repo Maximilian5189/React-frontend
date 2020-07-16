@@ -4,6 +4,7 @@ import { IonNote, IonButton, IonPage, IonContent, IonList } from '@ionic/react';
 import Input from './Input';
 
 const Login = props => {
+  const useMountEffect = (fun) => useEffect(fun, [])
   const userContext = useContext(UserContext);
   const [loginMessage, setloginMessage] = useState({success: '', fail: ''});
   const [formFields, setformFields] = useState({
@@ -15,7 +16,7 @@ const Login = props => {
     if (e) {
       e.preventDefault();
     }
- 
+
     const token = localStorage.token
     let body;
     if (formFields.username.fieldValue.length === 0 && formFields.password.fieldValue.length === 0 && !e) {
@@ -69,9 +70,7 @@ const Login = props => {
     localStorage.token = '';
   }
 
-  useEffect(() => {
-    login(null);
-  }, []);
+  useMountEffect(login)
 
   if (userContext.userState.login === true) {
     return (

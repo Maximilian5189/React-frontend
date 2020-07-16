@@ -69,7 +69,7 @@ const ChangeUserdata = props => {
       if (fieldName === key) {
         const fieldErrors = getFieldErrors(fieldObject)
         updatedFormFields[key] = {...fieldObject, ...{fieldErrors}}
-        for (let [key, errorMessage] of Object.entries(fieldErrors)) {
+        for (let errorMessage of Object.values(fieldErrors)) {
           if (errorMessage.length > 0) {
             errorsExist = true;
           }
