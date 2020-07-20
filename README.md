@@ -4,5 +4,5 @@
 npm install
 
 # Serve
-npm start
+npm start;
 access via localhost:3000
