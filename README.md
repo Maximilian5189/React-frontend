@@ -1,9 +1,12 @@
 # React-frontend
 
-# Install
+## Live demo
+`http://my-react-frontend.s3-website.eu-central-1.amazonaws.com`
+
+## Install
 `npm install`
 
-# Serve
+## Serve
 `npm start`
 
 access via localhost:3000
