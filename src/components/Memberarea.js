@@ -6,7 +6,7 @@ const Memberarea = props => {
   const userContext = useContext(UserContext);
   const [userData, setUserData] = useState([]);
 
-  const getUserData = props => {
+  const getUserData = () => {
     const token = localStorage.token
     const url = 'https://mybackend.hopto.org:8000/user';
 
