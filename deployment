@@ -1,3 +1,3 @@
 npm run build
 aws configure
-aws s3 sync build s3://my-react-frontend
+aws s3 sync build s3://my-react-frontend.m-space.tech
