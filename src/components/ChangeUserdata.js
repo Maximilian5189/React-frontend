@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { backendURL } from '../config';
 import { UserContext } from '../GlobalState';
 import { IonButton, IonPage, IonText, IonList, IonContent, IonItem } from '@ionic/react';
 import Input from './Input';
@@ -20,7 +21,7 @@ const ChangeUserdata = props => {
   const getInitialUserdata = () => {
     const token = localStorage.token
 
-    const url = 'https://mybackend.hopto.org:8000/user';
+    const url = `${backendURL}/user`;
     fetch(url, {
       headers: {'Content-Type': 'application/json',
       Authorization: 'bearer ' + token},
@@ -61,7 +62,7 @@ const ChangeUserdata = props => {
     body[fieldName] = formFields[fieldName].fieldValue;
 
     body = JSON.stringify(body);
-    const url = 'https://mybackend.hopto.org:8000/user';
+    const url = `${backendURL}/user`;
     fetch(url, {
       headers: {'Content-Type': 'application/json',
       Authorization: 'bearer ' + token},

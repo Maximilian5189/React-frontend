@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
+import { backendURL } from '../config';
 import { UserContext, LOGIN, LOGOUT } from '../GlobalState';
 import { IonNote, IonButton, IonPage, IonContent, IonList } from '@ionic/react';
 import Input from './Input';
@@ -28,7 +29,7 @@ const Login = props => {
       body = JSON.stringify({username: formFields.username.fieldValue, password: formFields.password.fieldValue});
     }
 
-    fetch('https://mybackend.hopto.org:8000/user/login', 
+    fetch(`${backendURL}/user/login`, 
     {
       headers: {'Content-Type': 'application/json'},
       body: body,

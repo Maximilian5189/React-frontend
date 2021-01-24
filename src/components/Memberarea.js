@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { backendURL } from '../config';
 import { UserContext } from '../GlobalState';
 import { IonContent, IonPage, IonList, IonItem } from '@ionic/react';
 
@@ -8,7 +9,7 @@ const Memberarea = props => {
 
   const getUserData = () => {
     const token = localStorage.token
-    const url = 'https://mybackend.hopto.org:8000/user';
+    const url = `${backendURL}/user`;
 
     fetch(url, {
       headers: {'Content-Type': 'application/json',

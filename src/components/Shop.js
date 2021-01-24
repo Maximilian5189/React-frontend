@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { backendURL } from '../config';
 import { IonCard, IonPage, IonText, IonItemDivider, IonButton, IonItem, IonList, IonLabel, IonNote, IonChip, IonBadge, IonContent, IonCardContent } from '@ionic/react';
 import { UserContext } from '../GlobalState';
 
@@ -47,7 +48,7 @@ const Shop = props => {
     const token = localStorage.token
     let body = { data: cart };
     body = JSON.stringify(body);
-    const url = 'https://mybackend.hopto.org:8000/user';
+    const url = `${backendURL}/user?`;
     fetch(url, {
       headers: {'Content-Type': 'application/json',
       Authorization: 'bearer ' + token},
@@ -79,7 +80,7 @@ const Shop = props => {
   }, [userContext.userState.login, props.tabChanged, shopContentToDisplay])
 
   useEffect(() => {
-    fetch('https://mybackend.hopto.org:8000/data', 
+    fetch(`${backendURL}/data`, 
     {
       headers: {
         'Content-Type': 'application/json'

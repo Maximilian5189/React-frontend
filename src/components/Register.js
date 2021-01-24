@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { backendURL } from '../config';
 import { UserContext, LOGOUT, USERINPUT } from '../GlobalState';
 import { IonButton, IonPage, IonNote, IonList, IonText, IonContent } from '@ionic/react';
 import Input from './Input';
@@ -25,7 +26,7 @@ const Register = props => {
     }
 
     const body = JSON.stringify({username: formFields.username.fieldValue, password: formFields.password.fieldValue, email: formFields.email.fieldValue});
-    const url = 'https://mybackend.hopto.org:8000/user/add';
+    const url = `${backendURL}/user/add`;
     fetch(url, {
       headers: {'Content-Type': 'application/json'},
       body: body,
